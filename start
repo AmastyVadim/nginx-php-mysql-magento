@@ -1,0 +1,3 @@
+#!/bin/bash
+# Start Docker Container Server and ElasticSearch
+docker-compose -f docker-compose.yml -f elasticsearch/docker-compose-elas7.4.yml up -d 

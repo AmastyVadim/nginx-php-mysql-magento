@@ -1,0 +1,12 @@
+version: '3.3'
+services:
+  es7.6:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.2
+    container_name: es7.6
+    hostname: es7.6
+    environment:
+      - node.name=es7.6
+      - cluster.name=es-docker-cluster
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"

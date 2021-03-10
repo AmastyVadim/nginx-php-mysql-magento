@@ -58,7 +58,4 @@ alias cl='clear'
 
 alias ll='ls -alF'
 alias l='ls -la'
-alias cdf='cd /var/www/first.loc'
-alias cdt='cd /var/www/two.loc'
-
-
+alias cdf='cd /var/www/ap74.magento.loc'
