@@ -50,13 +50,6 @@ services:
         - mysql:mysql
       volumes:
         - ./phpmyadmin/sessions:/sessions
-    mailhog:
-      image: mailhog/mailhog
-      container_name: mailhog
-      hostname: mailhog
-      ports:
-        - "1025:1025"
-        - "8025:8025"
 networks:
   default:
     ipam:

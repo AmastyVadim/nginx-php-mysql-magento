@@ -1,17 +1,59 @@
-# SEGA_>DockerRepository
+# Docker контейнер для локальной разработки на Magento 2
+В этом репозитории хранится специфично настроеный docker контейнер для работы с Magento 2  
+Состав контейнера:
+- nginx
+- php 7.4
+- mysql 5.7
+- phpmyadmin
+- elasticsearch 7.4
+- xdebug-2.9.8
+### Подготовка
+Собственно нужен докер)  
+**MacOS:**
 
-1. Клонируем репозиторий на гитхабе. Переименовываем .env-example в .env файл с переменными.
-USER_ID=ваш uid
-GROUP_ID=ваш gid
+[Docker](https://docs.docker.com/docker-for-mac/install/), [Docker-compose](https://docs.docker.com/compose/install/#install-compose) и [Docker-sync](https://github.com/EugenMayer/docker-sync/wiki/docker-sync-on-OSX).
 
-2. Прописываем узел ap74.magento.loc в файле /etc/hosts
+**Windows:**
 
-127.0.0.1 ap74.magento.loc
+[Docker](https://docs.docker.com/docker-for-windows/install/), [Docker-compose](https://docs.docker.com/compose/install/#install-compose) и [Docker-sync](https://github.com/EugenMayer/docker-sync/wiki/docker-sync-on-Windows).
 
-3. В папке с гитом запускаем команды:
-chmod +x ./stop && chmod +x ./start && chmod +x ./restart && ./start
+**Linux:**
 
-4. Настраиваем проект ap74.magento.loc в PhpStorm.
+[Docker](https://docs.docker.com/engine/installation/linux/docker-ce/ubuntu/) и [Docker-compose](https://docs.docker.com/compose/install/#install-compose).
+
+Далее нужно запустить службу докера  
+`sudo systemctl enable docker.service`
+
+Чтобы не запускать докер от рутового пользователя в дистрибутивах linux, можно воспользоваться [этим](https://docs.docker.com/engine/install/linux-postinstall/) гайдом.  
+Если вкратце, то запускаем следующие команды:
+```
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker 
+
+```
+
+### Разворачивание контейнера
+1. Клонируем репозиторий в домашнюю папку  
+`git clone https://github.com/AmastyVadim/nginx-php-mysql-magento.git` 
+
+2. Переходим в папку с репозиторием и копируем .env-example в .env файл с переменными  
+`cp .env-example .env`  
+Переменные у нас следующие:  
+*USER_ID*=ваш **uid**   
+*GROUP_ID*=ваш **gid**  
+если не знаете что тут писать, оставьте 1000.
+
+3. Прописываем узел magento.loc в файле /etc/hosts  
+`echo "127.0.0.1 magento.loc" | sudo tee -a /etc/hosts`
+
+4. Выставляем права на выполнение для наших скриптов:  
+`chmod +x ./stop && chmod +x ./start && chmod +x ./restart`
+
+5. Запускаем контейнер и ждём, пока он скомпилируется:  
+`./start`
+
+### Настраиваем дебаггер для PhpStorm.
 
 P/S исходники брались отсюда: https://habr.com/ru/post/473184/
 
