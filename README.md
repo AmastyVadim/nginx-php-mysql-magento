@@ -108,7 +108,7 @@ newgrp docker
     для браузера. И в выпадающем дропдауне выбрать зелёную иконку **Debug**
 - Далее идём в настройки PhpStorm 
     **File > Settings > Languages & Frameworks > PHP > Debug**  
-    Добавляем *Debug port:* 9008 > [пример](https://lh6.googleusercontent.com/ujKN8RwUOvRhuA3idvfkogoEsGIfQp4yvwJzwDK5lzFOx_gaYtoIZWwhzfAEnQrp9GtQNQ2gkxFoM-W3vJ0N=w1920-h1008-rw?raw=true) 
+    Добавляем *Debug port:* 9008 > [пример](https://lh6.googleusercontent.com/ujKN8RwUOvRhuA3idvfkogoEsGIfQp4yvwJzwDK5lzFOx_gaYtoIZWwhzfAEnQrp9GtQNQ2gkxFoM-W3vJ0N=w1920-h1008-rw) 
 - Затем в **File > Settings > Languages & Frameworks > PHP > Server**
     + Жмём **+**
     + *Name:* magento.loc
