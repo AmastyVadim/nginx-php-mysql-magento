@@ -91,7 +91,6 @@ RUN go get github.com/mailhog/mhsendmail
 RUN cp /root/go/bin/mhsendmail /usr/bin/mhsendmail
 RUN echo 'sendmail_path = /usr/bin/mhsendmail --smtp-addr mailhog:1025' >> /usr/local/etc/php/conf.d/magento.ini
 
-#Configure permissions
 
 RUN apt-get install -y git
 
@@ -101,7 +100,15 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 #RUN wget https://getcomposer.org/installer -O - -q   | php -- --install-dir=/bin --filename=composer --quiet
 
-RUN usermod -u ${USER_ID} www-data && groupmod -g ${GROUP_ID} www-data
+#Configure permissions
+
+RUN usermod -u ${USER_ID} www-data && groupmod -g ${GROUP_ID} www-data && \
+  chsh -s /bin/bash www-data && chown -R www-data:www-data /var/www
+
+RUN usermod -aG sudo www-data
+
+RUN sed -i /etc/sudoers -re 's/^%sudo.*/%sudo ALL=(ALL:ALL) NOPASSWD: ALL/g'
+
 
 WORKDIR /var/www
 
