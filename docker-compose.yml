@@ -12,7 +12,7 @@ services:
         - ./www:/var/www
       environment:
         - XDEBUG_CONFIG=remote_host=192.168.220.1 remote_enable=1 remote_autostart=off  remote_port=9008
-        - PHP_IDE_CONFIG=serverName=ap74.magento
+        - PHP_IDE_CONFIG=serverName=magento.loc
         - PMA_HOST=mysql
         - PMA_PORT=3306
     nginx-serve:
