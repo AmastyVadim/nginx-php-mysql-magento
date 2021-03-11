@@ -24,13 +24,12 @@
 Далее нужно запустить службу докера  
 `sudo systemctl enable docker.service`
 
-Чтобы не запускать докер от рутового пользователя в дистрибутивах linux, можно воспользоваться [этим](https://docs.docker.com/engine/install/linux-postinstall/) гайдом.  
+Чтобы не выплнять команды докера от рутового пользователя в дистрибутивах linux, можно воспользоваться [этим](https://docs.docker.com/engine/install/linux-postinstall/) гайдом.  
 Если вкратце, то запускаем следующие команды:
 ```
 sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker 
-
 ```
 
 ### Разворачивание контейнера
@@ -63,7 +62,7 @@ newgrp docker
 1. Распаковываем его в папку `www/magento.loc`
 1. Правим права на файлы:  
     `sudo chmod -R 777 www/magento.loc/*`
-1. Создаём в phpmyadmin бд.
+1. Создаём в phpmyadmin БД.
     1. Переходим в браузере по адресу 0.0.0.0:2200
     1. Логинимся как `root`, пароль `secret`
     1. Базу данных называем `m2db`
@@ -83,7 +82,7 @@ newgrp docker
 1. Поздравляю с установкой!  
     Фронт теперь доступен по адресу http://magento.loc/  
     Админка http://magento.loc/admin  
-    Username: admin
+    Username: admin  
     Password: a111111
 
 ### Дальнейшая работа с контейнерами
@@ -97,13 +96,25 @@ newgrp docker
     `docker exec -it nginx-php-mysql-magento_php74-ap74_1 bash`
 1. Теперь мы в докер системе. Нам нужно перейти в папку с магентой  
     `cd magento.loc`
-1. Выполняем нужные команды `php bin/magento cache:flush`
+1. И в ней выполняем нужные команды `php bin/magento cache:flush`
 
 ### Как получить доступ в бд
 1. Переходим в браузере по адресу **0.0.0.0:2200**
 1. Логинимся как `root`, пароль `secret`
 
 
-### Настраиваем дебаггер для PhpStorm.
+### Настраиваем дебаггер для PhpStorm
+- Изначально нам нужно установить [Xdebug helper](https://chrome.google.com/webstore/detail/xdebug-helper/eadndfjplgieldjbigjakmdgkmoaaaoc) 
+    для браузера. И в выпадающем дропдауне выбрать зелёную иконку **Debug**
+- Далее идём в настройки PhpStorm 
+    **File > Settings > Languages & Frameworks > PHP > Debug**  
+    Добавляем *Debug port:* 9008 > [пример](https://lh6.googleusercontent.com/ujKN8RwUOvRhuA3idvfkogoEsGIfQp4yvwJzwDK5lzFOx_gaYtoIZWwhzfAEnQrp9GtQNQ2gkxFoM-W3vJ0N=w1920-h1008-rw?raw=true) 
+- Затем в **File > Settings > Languages & Frameworks > PHP > Server**
+    + Жмём **+**
+    + *Name:* magento.loc
+    + *Host:* magento.loc
+    + Ставим галочку **Use path mappings**
+    + В *Absolute path on the server* добавляем: **/var/www/magento.loc**
+    + Жмём **OK** > [пример](https://lh4.googleusercontent.com/Ct5jRBMZc84T1IjI338G0GjKAhHW4Q3NzAS0N6VVz2oG1ZZpXp9UpfttK03hL4OoaahirnfY_TuxfioN_sj1=w1920-h1008-rw)
 
-P/S исходники брались отсюда: https://habr.com/ru/post/473184/
+Чтобы убедиться, что дебаггер настроен правильно включаем listener в PhpStorm. Ставим точку останова в файл *app/bootstrap.php* и перезагружаем страницу.
