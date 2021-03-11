@@ -1,3 +1,4 @@
 .composer/
 .bash_history
-magento.loc/**/
+magento.loc/*
+!magento.loc/.gitkeep
