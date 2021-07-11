@@ -108,13 +108,13 @@ newgrp docker
     для браузера. И в выпадающем дропдауне выбрать зелёную иконку **Debug**
 - Далее идём в настройки PhpStorm 
     **File > Settings > Languages & Frameworks > PHP > Debug**  
-    Добавляем *Debug port:* 9008 > [пример](https://lh6.googleusercontent.com/ujKN8RwUOvRhuA3idvfkogoEsGIfQp4yvwJzwDK5lzFOx_gaYtoIZWwhzfAEnQrp9GtQNQ2gkxFoM-W3vJ0N=w1920-h1008-rw) 
+    Добавляем *Debug port:* 9008 > [пример](https://drive.google.com/file/d/1EQGd8khYy9l1WVYjiIgROgm44lRvrsDH/view) 
 - Затем в **File > Settings > Languages & Frameworks > PHP > Server**
     + Жмём **+**
     + *Name:* magento.loc
     + *Host:* magento.loc
     + Ставим галочку **Use path mappings**
     + В *Absolute path on the server* добавляем: **/var/www/magento.loc**
-    + Жмём **OK** > [пример](https://lh4.googleusercontent.com/Ct5jRBMZc84T1IjI338G0GjKAhHW4Q3NzAS0N6VVz2oG1ZZpXp9UpfttK03hL4OoaahirnfY_TuxfioN_sj1=w1920-h1008-rw)
+    + Жмём **OK** > [пример](https://drive.google.com/file/d/1rRWRhdJltHTp3CBAqxaAVWLh22AYi0JN/view)
 
 Чтобы убедиться, что дебаггер настроен правильно включаем listener в PhpStorm. Ставим точку останова в файл *app/bootstrap.php* и перезагружаем страницу.
